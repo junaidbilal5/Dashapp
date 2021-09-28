@@ -18,10 +18,10 @@ from dash_extensions import Lottie
 
 ######-------------------------URL of Lottie Animations---------------------------------------------------###
 teacher='https://assets1.lottiefiles.com/private_files/lf30_g4ft9Z.json'
-quiz='https://assets7.lottiefiles.com/private_files/lf30_6ocpfdil.json'
-assignment='https://assets9.lottiefiles.com/private_files/lf30_VrsZnP.json'
 
-options = dict(loop=2, autoplay=True, rendererSettings=dict(preserveAspectRatio='xMidYMid slice'))
+
+
+options = dict(loop=False, autoplay=True, rendererSettings=dict(preserveAspectRatio='xMidYMid slice'))
 
 
 
@@ -39,7 +39,7 @@ def TeachersLayout():
 								html.Div(
 									children = [
 										html.H1(
-											children = "Teachers Section/قسم المعلمين",
+											children = "Teachers Section",
 											style = {
 												"margin-bottom": "0",
 												"color": "black"
@@ -56,7 +56,7 @@ def TeachersLayout():
 		html.Div([
 
 				html.Div([
-					html.Label(['Select Year/عام'],style={'font-weight': 'bold', 'color':'black'}),
+					html.Label(['Select Year'],style={'font-weight': 'bold', 'color':'black'}),
 					dcc.Dropdown(
 						id="dropdown(teacher)",
 						options=[{"label": x, "value": x} for x in year],
@@ -68,7 +68,7 @@ def TeachersLayout():
 				], className='create_container three columns'),
 
 		html.Div([
-					html.Label(['Select Semester/حدد الفصل الدراسي'],style={'font-weight': 'bold', 'color':'black'}),
+					html.Label(['Select Semester'],style={'font-weight': 'bold', 'color':'black'}),
 					dcc.Dropdown(
 						id="dropdown1(teacher)",
 						options=[{"label": x, "value": x} for x in semester],
@@ -91,7 +91,7 @@ def TeachersLayout():
 							children = [
 								# Title
 								html.H6(
-									children = "Total Teachers/مجموع المعلمين",
+									children = "Total Teachers",
 									style = {
 										"textAlign": "center",
 										"color": "black"
@@ -100,7 +100,7 @@ def TeachersLayout():
 								(Lottie(options=options, width='27%', height='27%', url=teacher)),
 								# Total value
 								html.P(id="card_1(teacher)",
-									children = "300",
+									children = "13",
 									style = {
 										"textAlign": "center",
 										"color": "orange",
@@ -116,17 +116,15 @@ def TeachersLayout():
 							children = [
 								# Title
 								html.H6(
-									children = "Total Assignments Given/مجموع التعيينات الممنوحة",
+									children = "Total Assignments Given",
 									style = {
 										"textAlign": "center",
 										"color": "black"
 									}
 								),
-								(Lottie(options=options, width='27%', height='27%', url=assignment)),
-
 								# Total value
 								html.P(id="card_2(teacher)",
-									children = "150",
+									children = "15",
 									style = {
 										"textAlign": "center",
 										"color": "#dd1e35",
@@ -142,16 +140,15 @@ def TeachersLayout():
 							children = [
 								# Title
 								html.H6(
-									children = "Total Tests Taken/مجموع الاختبارات التي تم إجراؤها",
+									children = "Total Tests Taken",
 									style = {
 										"textAlign": "center",
 										"color": "black"
 									}
 								),
-								(Lottie(options=options, width='47%', height='47%', url=quiz)),
 								# Total value
 								html.P(id="card_3(teacher)",
-									children = "200",
+									children = "13",
 									style = {
 										"textAlign": "center",
 										"color": "#dd1e35",
@@ -221,7 +218,21 @@ def TeachersLayout():
 
 		html.Div([
 
-
+		html.Div(
+							children = [
+								# Donut chart
+								dcc.Graph(
+									id = "pie_chart(teacher)",
+									config = {
+										"displayModeBar": "hover"
+									}
+								)
+							],
+							className = "create_container four columns",
+							style = {
+								"maxWidth": "400px"
+							}
+						),
 
 		html.Div(
 							children = [
@@ -252,19 +263,6 @@ def TeachersLayout():
 							],
 							className = "create_container five columns",
 						),
-
-			html.Div(
-				children=[
-					# Donut chart
-					dcc.Graph(
-						id="small_bar1(teacher)",
-						config={
-							"displayModeBar": "hover"
-						}
-					)
-				],
-				className="create_container five columns",
-			),
 		],className = "row flex-display"),
 
 
@@ -347,6 +345,61 @@ def update_graph(year, semester):
      Input("dropdown(teacher)", "value"),
      Input("dropdown1(teacher)", "value"))
 
+def update_graph(year,semester):
+
+
+
+    mask= (df['Year']==year)  & (df['Semester']==semester)
+    labels = df[mask]['Gender'].unique()
+    values = df[mask]['Gender'].value_counts()
+
+
+    fig = {
+								"data": [
+									go.Pie(
+										labels=labels,
+										values=values,
+										marker={
+
+										},
+										hoverinfo="label+value+percent",
+										textinfo="percent",
+										hole=0.7,
+										rotation=45,
+										insidetextorientation="radial"
+									)
+								],
+								"layout": go.Layout(
+									title={
+										"text": f"Gender-wise teachers in {semester}, {year}",
+										"y": 0.93,
+										"x": 0.5,
+										"xanchor": "center",
+										"yanchor": "top"
+									},
+									titlefont={
+										"color": "black",
+										"size": 15
+									},
+									font={
+										"family": "sans-serif",
+										"color": "black",
+										"size": 12
+									},
+									hovermode="closest",
+									paper_bgcolor="white",
+									plot_bgcolor="white",
+									legend={
+										"orientation": "h",
+										"bgcolor": "white",
+										"xanchor": "center",
+										"x": 0.5,
+										"y": -0.7
+									}
+								)
+							}
+
+    return fig
 
 
 @app.callback(
@@ -380,7 +433,7 @@ def update_graph(year,semester):
 								],
 								"layout": go.Layout(
 									title={
-										"text": f"Ehtnicity of teachers/عرقية المعلمين ",
+										"text": f"Ehtnicity of teachers in {semester}, {year}",
 										"y": 0.93,
 										"x": 0.5,
 										"xanchor": "center",
@@ -445,7 +498,7 @@ def update_graph(year, semester):
 
         "layout": go.Layout(
             title={
-                "text": f"Number of Teachers from Countries /عدد المعلمين من البلدان ",
+                "text": f"Number of Teachers from Countries in {semester}, {year} ",
                 "y": 0.93,
                 "x": 0.5,
                 "xanchor": "center",
@@ -456,12 +509,11 @@ def update_graph(year, semester):
                 "size": 15
             },
             xaxis={
-                "title": "<b> Country/دولة</b>",
+                "title": "<b> Country</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
                 "showticklabels": True,
-				'categoryorder': 'total descending',
                 "linecolor": "black",
                 "linewidth": 1,
                 "ticks": "outside",
@@ -472,103 +524,7 @@ def update_graph(year, semester):
                 }
             },
             yaxis={
-                "title": "<b>Teachers/معلمون</b>",
-                "color": "black",
-                "showline": True,
-                "showgrid": False,
-                "showticklabels": True,
-                "linecolor": "white",
-                "linewidth": 1,
-                "ticks": "outside",
-                "tickfont": {
-                    "family": "Aerial",
-                    "color": "black",
-                    "size": 12
-                }
-            },
-            font={
-                "family": "sans-serif",
-                "color": "black",
-                "size": 12
-            },
-            hovermode="closest",
-            paper_bgcolor="white",
-            plot_bgcolor="white",
-            legend={
-                "orientation": "h",
-                "bgcolor": "black",
-                "xanchor": "center",
-                "x": 0.5,
-                "y": -0.7
-            }
-        )
-
-
-    }
-    return fig
-
-
-@app.callback(
-    Output(component_id='small_bar1(teacher)', component_property='figure'),
-     Input("dropdown(teacher)", "value"),
-     Input("dropdown1(teacher)", "value"))
-
-
-def update_graph(year, semester):
-    mask= (df['Year']==year)  & (df['Semester']==semester)
-
-
-    dfg=df[mask].groupby('College').count().reset_index()
-
-
-
-    fig = {
-        "data": [
-            go.Bar(
-                x=dfg['College'],
-                y=dfg['Teacher_Name'],
-                name="College-wise teachers",
-                marker={
-                    "color": "rgb(219, 191, 249)",
-                    "opacity":0.6,
-                },
-                hoverinfo="text",
-
-            ),
-
-
-        ],
-
-        "layout": go.Layout(
-            title={
-                "text": f"College Wise Number of Teachers /عدد المعلمين الحكيم في الكلية ",
-                "y": 0.93,
-                "x": 0.5,
-                "xanchor": "center",
-                "yanchor": "top"
-            },
-            titlefont={
-                "color": "black",
-                "size": 15
-            },
-            xaxis={
-                "title": "<b> College/كلية</b>",
-                "color": "black",
-                "showline": True,
-                "showgrid": False,
-                "showticklabels": True,
-				'categoryorder': 'total descending',
-                "linecolor": "black",
-                "linewidth": 1,
-                "ticks": "outside",
-                "tickfont": {
-                    "family": "Aerial",
-                    "color": "black",
-                    "size": 12
-                }
-            },
-            yaxis={
-                "title": "<b>Teachers/معلمون</b>",
+                "title": "<b>Teachers</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,

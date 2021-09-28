@@ -22,7 +22,7 @@ teacher='https://assets5.lottiefiles.com/private_files/lf30_g4ft9Z.json'
 active='https://assets9.lottiefiles.com/packages/lf20_Q895iE.json'
 
 
-options = dict(loop=2, autoplay=True, rendererSettings=dict(preserveAspectRatio='xMidYMid slice'))
+options = dict(loop=False, autoplay=True, rendererSettings=dict(preserveAspectRatio='xMidYMid slice'))
 
 ##-----------------------------------------------------------##--------------------------------------------###
 
@@ -41,7 +41,7 @@ def StudentsLayout():
 								html.Div(
 									children = [
 										html.H1(
-											children = "Students Section/قسم الطلاب",
+											children = "Students Section",
 											style = {
 												"margin-bottom": "0",
 												"color": "black"
@@ -93,7 +93,7 @@ def StudentsLayout():
 							children = [
 								# Title
 								html.H6(
-									children = "Total Students Enrolled/مجموع الطلاب",
+									children = "Total Students Enrolled",
 									style = {
 										"textAlign": "center",
 										"color": "black"
@@ -102,7 +102,7 @@ def StudentsLayout():
 								(Lottie(options=options, width='27%', height='27%', url=enrolled)),
 								# Total value
 								html.P(id="card_1(student)",
-									children = "1117",
+									children = "2500",
 									style = {
 										"textAlign": "center",
 										"color": "#dd1e35",
@@ -118,7 +118,7 @@ def StudentsLayout():
 							children = [
 								# Title
 								html.H6(
-									children = "Total Students on Scholarship/مجموع الطلاب في المنحة",
+									children = "Total Students on Scholarship",
 									style = {
 										"textAlign": "center",
 										"color": "black"
@@ -143,7 +143,7 @@ def StudentsLayout():
 							children = [
 								# Title
 								html.H6(
-									children = "Teacher to Students Ratio/نسبة المدرسين إلى الطلاب",
+									children = "Teacher to Students Ratio",
 									style = {
 										"textAlign": "center",
 										"color": "black"
@@ -152,7 +152,7 @@ def StudentsLayout():
 								(Lottie(options=options, width='27%', height='27%', url=teacher)),
 								# Total value
 								html.P(id="card_3(student)",
-									children = "1:3",
+									children = "1:250",
 									style = {
 										"textAlign": "center",
 										"color": "#dd1e35",
@@ -168,7 +168,7 @@ def StudentsLayout():
 							children = [
 								# Title
 								html.H6(
-									children = "Number of Active Courses/عدد الدورات النشطة",
+									children = "Number of Active Courses",
 									style = {
 										"textAlign": "center",
 										"color": "black"
@@ -177,7 +177,7 @@ def StudentsLayout():
 								(Lottie(options=options, width='18%', height='18%', url=active)),
 								# Total value
 								html.P(id="card_4(student)",
-									children = "260",
+									children = "14",
 									style = {
 										"textAlign": "center",
 										"color": "#dd1e35",
@@ -193,16 +193,8 @@ def StudentsLayout():
 					className = "row flex-display"
 				),
 
-			html.Div([
-				html.Div([
-					dcc.Graph(id='the_graph2(student)', config={
-						"displayModeBar": "hover"
-					})
-				], className="create_container eleven columns"),
 
-			], className="row flex-display"),
-
-			###-------------------------------------------------Gauge Meter-----------------------------------------------##
+		###-------------------------------------------------Gauge Meter-----------------------------------------------##
 		html.Div([
 		# html.Div(
 		#
@@ -250,13 +242,9 @@ def StudentsLayout():
 		# 					}
 		# 				),
 
-
-
-
-
 			html.Div(
 				children=[
-
+					# Donut chart
 					dcc.Graph(
 						id="small_bar1(student)",
 						config={
@@ -273,9 +261,17 @@ def StudentsLayout():
 
 			],className = "row flex-display"),
 
-		####------------------------Bar graph for Summary Sessions conducted-----------------------------------------------------------###
+		####------------------------Bar graph for Live Sessions conducted-----------------------------------------------------------###
 
 
+		html.Div([
+			html.Div([
+				dcc.Graph(id='the_graph2(student)',config = {
+										"displayModeBar": "hover"
+									})
+			],className = "create_container eleven columns"),
+
+		],className = "row flex-display"),
 
 
 
@@ -410,99 +406,92 @@ def update_graph(year, semester):
      Input("dropdown1(student)", "value"))
 
 def update_graph(year, semester):
-	if year==2021:
-
-		categories = ['Arabic College/الكلية العربية', 'English College/كلية اللغة الإنجليزية', 'French College/الكلية الفرنسية', 'Urdu College/كلية الأردية']
-
-		fig = go.Figure()
-		fig.add_trace(go.Bar(
-			x=categories,
-			y=[285, 377, 250, 150],
-			name='Bachlore(البكالوريوس)',
-			marker_color='rgb(87, 212, 122)'
-		))
-		fig.add_trace(go.Bar(
-			x=categories,
-			y=[336, 255, 200, 125],
-			name='General Secondary/الثانوية العامة',
-			marker_color='rgb(87, 156, 212)'
-		))
-
-		fig.add_trace(go.Bar(
-			x=categories,
-			y=[67, 135, 120, 170],
-			name='Masters Degree/ماجيستير',
-			marker_color='rgb(195, 87, 212)'
-		))
-
-		fig.add_trace(go.Bar(
-			x=categories,
-			y=[12, 20, 15, 13],
-			name='PHD/دكتوراه',
-			marker_color='rgb(212, 133, 87)'
-		))
-
-		# Here we modify the tickangle of the xaxis, resulting in rotated labels.
-		fig.update_layout(barmode='group')
-		# fig.show()
-		fig.update_layout(
-			height=550,
-			paper_bgcolor='white',
-			plot_bgcolor='white',
-			title=f'<b>Summary of Colleges</b>',
-			title_font_color='Black',
-			title_font_size=20,
-			showlegend=True,
-
-		)
-		return fig
-	if year==2020:
-		categories = ['Arabic College/الكلية العربية', 'English College/كلية اللغة الإنجليزية', 'French College/الكلية الفرنسية', 'Urdu College/كلية الأردية']
-
-		fig = go.Figure()
-		fig.add_trace(go.Bar(
-			x=categories,
-			y=[270, 300, 240, 145],
-			name='Bachlore(البكالوريوس)',
-			marker_color='rgb(87, 212, 122)'
-		))
-		fig.add_trace(go.Bar(
-			x=categories,
-			y=[330, 240, 150, 115],
-			name='General Secondary/الثانوية العامة',
-			marker_color='rgb(87, 156, 212)'
-		))
-
-		fig.add_trace(go.Bar(
-			x=categories,
-			y=[60, 125, 110, 150],
-			name='Masters Degree/ماجيستير',
-			marker_color='rgb(195, 87, 212)'
-		))
-
-		fig.add_trace(go.Bar(
-			x=categories,
-			y=[10, 25, 10, 11],
-			name='PHD/دكتوراه',
-			marker_color='rgb(212, 133, 87)'
-		))
-
-		# Here we modify the tickangle of the xaxis, resulting in rotated labels.
-		fig.update_layout(barmode='group')
-		# fig.show()
-		fig.update_layout(
-			height=550,
-			paper_bgcolor='white',
-			plot_bgcolor='white',
-			title=f'<b>Summary of Colleges</b>',
-			title_font_color='Black',
-			title_font_size=20,
-			showlegend=True,
-
-		)
-		return fig
+    mask= (df['Year']==year)  & (df['Semester']==semester)
 
 
+    dfg=df[mask].groupby('Category').count().reset_index()
+
+
+
+    fig = {
+        "data": [
+            go.Bar(
+                x=dfg['Category'],
+                y=dfg['StudentID'],
+                name="Department Wise",
+                marker={
+                    "color": "#f79d9c",
+                    "opacity":0.6,
+                },
+                hoverinfo="text",
+
+            ),
+
+
+        ],
+
+        "layout": go.Layout(
+            title={
+                "text": f"Number of Live Sessions in {semester}, {year} ",
+                "y": 0.93,
+                "x": 0.5,
+                "xanchor": "center",
+                "yanchor": "top"
+            },
+            titlefont={
+                "color": "black",
+                "size": 19
+            },
+            xaxis={
+                "title": "<b>Live Sessions</b>",
+                "color": "black",
+                "showline": True,
+                "showgrid": False,
+                "showticklabels": True,
+                "linecolor": "black",
+                "linewidth": 1,
+                "ticks": "outside",
+                "tickfont": {
+                    "family": "Aerial",
+                    "color": "black",
+                    "size": 12
+                }
+            },
+            yaxis={
+                "title": "<b>Total Logins</b>",
+                "color": "black",
+                "showline": True,
+                "showgrid": False,
+                "showticklabels": True,
+                "linecolor": "white",
+                "linewidth": 1,
+                "ticks": "outside",
+                "tickfont": {
+                    "family": "Aerial",
+                    "color": "black",
+                    "size": 12
+                }
+            },
+            font={
+                "family": "sans-serif",
+                "color": "black",
+                "size": 12
+            },
+            hovermode="closest",
+            paper_bgcolor="white",
+            plot_bgcolor="white",
+            legend={
+                "orientation": "h",
+                "bgcolor": "black",
+                "xanchor": "center",
+                "x": 0.5,
+                "y": -0.7
+            }
+        )
+
+
+    }
+    return fig
 
 
 @app.callback(
@@ -536,7 +525,7 @@ def update_graph(year,semester):
 								],
 								"layout": go.Layout(
 									title={
-										"text": f"Gender group of students in /الجنس",
+										"text": f"Gender-wise scholarship students in {semester}, {year}",
 										"y": 0.93,
 										"x": 0.5,
 										"xanchor": "center",
@@ -576,7 +565,7 @@ def update_graph(year,semester):
 
 
     mask= (df['Year']==year)  & (df['Semester']==semester)
-    labels = ['Asian', 'European', 'ME','African']
+    labels = labels = ['Asian', 'European', 'ME','African']
     values = df[mask]['Ethnicity'].value_counts()
 
 
@@ -597,7 +586,7 @@ def update_graph(year,semester):
 								],
 								"layout": go.Layout(
 									title={
-										"text": "Continent wise enrolled/التحق القارة الحكيمة ",
+										"text": f"Ehtnic-groups enrolled in {semester}, {year}",
 										"y": 0.93,
 										"x": 0.5,
 										"xanchor": "center",
@@ -661,7 +650,7 @@ def update_graph(year, semester):
 
         "layout": go.Layout(
             title={
-                "text": f"Number of Student Requests /الطلبات ",
+                "text": f"Number of Student Requests in {semester}, {year} ",
                 "y": 0.93,
                 "x": 0.5,
                 "xanchor": "center",
@@ -672,13 +661,12 @@ def update_graph(year, semester):
                 "size": 15
             },
             xaxis={
-                "title": "<b>Total number/الرقم الإجمالي</b>",
+                "title": "<b>Total number</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
                 "showticklabels": True,
                 "linecolor": "black",
-				'categoryorder': 'total descending',
                 "linewidth": 1,
                 "ticks": "outside",
                 "tickfont": {
@@ -688,7 +676,7 @@ def update_graph(year, semester):
                 }
             },
             yaxis={
-                "title": "<b>Request Status/حالة الطلب</b>",
+                "title": "<b>Request Status</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
@@ -756,7 +744,7 @@ def update_graph(year, semester):
 
         "layout": go.Layout(
             title={
-                "text": f"Number of Students from Country /الطلاب في جميع أنحاء البلدان ",
+                "text": f"Number of Students from Country in {semester}, {year} ",
                 "y": 0.93,
                 "x": 0.5,
                 "xanchor": "center",
@@ -767,7 +755,7 @@ def update_graph(year, semester):
                 "size": 19
             },
             xaxis={
-                "title": "<b>Country/دولة</b>",
+                "title": "<b>Country</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
@@ -775,7 +763,6 @@ def update_graph(year, semester):
                 "linecolor": "black",
                 "linewidth": 1,
                 "ticks": "outside",
-				'categoryorder': 'total descending',
                 "tickfont": {
                     "family": "Aerial",
                     "color": "black",
@@ -783,7 +770,7 @@ def update_graph(year, semester):
                 }
             },
             yaxis={
-                "title": "<b>Students/تلاميذ</b>",
+                "title": "<b>Students</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
@@ -816,7 +803,6 @@ def update_graph(year, semester):
 
 
     }
-
     return fig
 
 
