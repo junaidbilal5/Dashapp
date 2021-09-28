@@ -1,0 +1,101 @@
+AppID,Status,Department,Gender,AcademicLevel,AcademicTerm,Age,Date,Month,ExamCentre,Scholarship,Requests,Month_Name,AgeGroup,Country,Lat,Long,Continent
+1,A,English,M,BS,Spring,18,2020,1,1,T1,R,Jan,18-24,Pakistan,30.3753,69.3451,Asia
+2,A,Urdu,F,MS,Spring,19,2020,1,1,T2,R,Jan,18-24,Pakistan,30.3753,69.3451,Asia
+3,P,French,M,MS,Spring,20,2020,1,2,T3,R,Jan,18-24,Pakistan,30.3753,69.3451,Asia
+4,D,Arabic,F,BS,Fall,18,2020,2,2,T2,P,Feb,18-24,Pakistan,30.3753,69.3451,Asia
+5,P,Arabic,F,BS,Fall,30,2020,3,3,T1,P,Mar,25-30,Pakistan,30.3753,69.3451,Asia
+6,D,French,M,BS,Spring,35,2020,3,3,T5,R,Mar,30-35,Pakistan,30.3753,69.3451,Asia
+7,P,English,M,PHD,Fall,26,2020,4,2,T4,A,Apr,25-30,Pakistan,30.3753,69.3451,Asia
+8,P,English,F,PHD,Fall,27,2020,4,1,T4,A,Apr,25-30,Pakistan,30.3753,69.3451,Asia
+9,A,Urdu,M,PHD,Spring,23,2021,5,2,T3,R,May,18-24,Pakistan,30.3753,69.3451,Asia
+10,A,Arabic,F,BS,Fall,30,2021,5,1,T2,R,May,25-30,Pakistan,30.3753,69.3451,Asia
+11,A,Arabic,M,BS,Spring,34,2021,6,2,T1,P,Jun,30-35,Pakistan,30.3753,69.3451,Asia
+12,A,Arabic,M,BS,Fall,29,2021,7,3,T1,A,Jul,25-30,Pakistan,30.3753,69.3451,Asia
+13,D,Arabic,F,MS,Fall,30,2021,7,3,T2,R,Jul,25-30,Pakistan,30.3753,69.3451,Asia
+14,P,Arabic,F,BS,Fall,21,2021,8,1,T3,R,Aug,18-24,Saudi Arabia,23.885942,45.079162,M.E
+15,P,French,F,BS,Spring,35,2021,8,2,T2,A,Aug,30-35,Saudi Arabia,23.885942,45.079162,M.E
+16,D,French,M,MS,Fall,38,2020,8,1,T1,R,Aug,35-40,Saudi Arabia,23.885942,45.079162,M.E
+17,P,French,M,MS,Fall,37,2020,9,2,T5,A,Sep,35-40,Saudi Arabia,23.885942,45.079162,M.E
+18,D,French,M,BS,Spring,21,2021,9,2,T4,R,Sep,18-24,Saudi Arabia,23.885942,45.079162,M.E
+19,A,French,F,BS,Fall,20,2020,10,2,T4,R,Oct,18-24,Saudi Arabia,23.885942,45.079162,M.E
+20,A,French,M,BS,Spring,36,2020,10,3,T3,R,Oct,35-40,Saudi Arabia,23.885942,45.079162,M.E
+21,A,Urdu,M,BS,Spring,18,2020,11,3,T2,P,Nov,18-24,Saudi Arabia,23.885942,45.079162,M.E
+22,A,Urdu,F,MS,Spring,34,2020,11,1,T1,A,Nov,30-35,Saudi Arabia,23.885942,45.079162,M.E
+23,P,Urdu,F,MS,Spring,26,2020,12,1,T1,R,Dec,25-30,Saudi Arabia,23.885942,45.079162,M.E
+24,D,Urdu,F,BS,Fall,19,2020,12,2,T2,A,Dec,18-24,Bangladesh,23.685,90.3563,Asia
+25,P,Urdu,M,BS,Fall,20,2020,1,3,T3,A,Jan,18-24,Bangladesh,23.685,90.3563,Asia
+26,D,English,M,BS,Spring,21,2020,1,3,T2,P,Jan,18-24,Bangladesh,23.685,90.3563,Asia
+27,P,English,M,PHD,Fall,22,2020,1,1,T1,P,Jan,18-24,Bangladesh,23.685,90.3563,Asia
+28,P,English,F,PHD,Fall,23,2020,2,2,T5,A,Feb,18-24,Turkey,38.9637,35.2433,Europe
+29,A,English,M,PHD,Spring,24,2020,2,3,T4,R,Feb,18-24,Turkey,38.9637,35.2433,Europe
+30,A,English,F,BS,Fall,25,2020,2,1,T4,R,Feb,18-24,Turkey,38.9637,35.2433,Europe
+31,A,Arabic,M,BS,Spring,26,2020,3,1,T3,A,Mar,25-30,Turkey,38.9637,35.2433,Europe
+32,A,Arabic,M,BS,Fall,27,2020,3,3,T2,R,Mar,25-30,Turkey,38.9637,35.2433,Europe
+33,D,Arabic,F,MS,Fall,28,2020,3,2,T1,P,Mar,25-30,Turkey,38.9637,35.2433,Europe
+34,P,Arabic,F,BS,Fall,29,2020,4,1,T1,P,Apr,25-30,Turkey,38.9637,35.2433,Europe
+35,P,Arabic,F,BS,Spring,30,2020,4,3,T2,A,Apr,25-30,Turkey,38.9637,35.2433,Europe
+36,D,Arabic,M,MS,Fall,31,2020,4,2,T3,R,Apr,30-35,Turkey,38.9637,35.2433,Europe
+37,P,French,M,MS,Fall,32,2020,5,1,T2,R,May,30-35,Turkey,38.9637,35.2433,Europe
+38,D,French,M,BS,Spring,33,2020,5,1,T1,A,May,30-35,Turkey,38.9637,35.2433,Europe
+39,A,French,F,BS,Fall,34,2020,5,1,T5,R,May,30-35,Egypt,26.820553,30.802498,M.E
+40,A,French,M,BS,Spring,24,2020,6,1,T4,A,Jun,18-24,Egypt,26.820553,30.802498,M.E
+41,A,French,M,BS,Spring,18,2020,6,2,T4,R,Jun,18-24,Egypt,26.820553,30.802498,M.E
+42,A,French,F,MS,Spring,28,2020,6,3,T3,R,Jun,25-30,Egypt,26.820553,30.802498,M.E
+43,P,French,F,MS,Spring,18,2020,7,3,T2,P,Jul,18-24,Egypt,26.820553,30.802498,M.E
+44,D,French,F,BS,Fall,19,2020,7,3,T1,A,Jul,18-24,Egypt,26.820553,30.802498,M.E
+45,P,French,M,BS,Fall,20,2020,7,3,T1,R,Jul,18-24,Egypt,26.820553,30.802498,M.E
+46,D,French,M,BS,Spring,21,2020,8,1,T2,R,Aug,18-24,Egypt,26.820553,30.802498,M.E
+47,P,Urdu,M,PHD,Fall,22,2020,8,2,T3,A,Aug,18-24,Nigeria,9.082,8.6753,Africa
+48,P,Urdu,F,PHD,Fall,23,2020,8,3,T2,P,Aug,18-24,Nigeria,9.082,8.6753,Africa
+49,A,Urdu,M,PHD,Spring,24,2020,9,1,T1,P,Sep,18-24,Nigeria,9.082,8.6753,Africa
+50,A,English,F,BS,Fall,25,2020,9,2,T5,A,Sep,18-24,Nigeria,9.082,8.6753,Africa
+51,A,English,M,BS,Spring,18,2020,1,1,T1,R,Jan,18-24,Pakistan,30.3753,69.3451,Asia
+52,A,Urdu,F,MS,Spring,19,2020,1,1,T2,R,Jan,18-24,Pakistan,30.3753,69.3451,Asia
+53,P,French,M,MS,Spring,20,2020,1,2,T3,R,Jan,18-24,Pakistan,30.3753,69.3451,Asia
+54,D,Arabic,F,BS,Fall,18,2021,2,2,T2,P,Feb,18-24,Pakistan,30.3753,69.3451,Asia
+55,P,Arabic,F,BS,Fall,30,2020,3,3,T1,P,Mar,25-30,Pakistan,30.3753,69.3451,Asia
+56,D,French,M,BS,Spring,35,2020,3,3,T5,R,Mar,30-35,Pakistan,30.3753,69.3451,Asia
+57,P,English,M,PHD,Fall,26,2020,4,2,T4,A,Apr,25-30,Pakistan,30.3753,69.3451,Asia
+58,P,English,F,PHD,Fall,27,2020,4,1,T4,A,Apr,25-30,Pakistan,30.3753,69.3451,Asia
+59,A,Urdu,M,PHD,Spring,23,2021,5,2,T3,R,May,18-24,Pakistan,30.3753,69.3451,Asia
+60,A,Arabic,F,BS,Fall,30,2021,5,1,T2,R,May,25-30,Pakistan,30.3753,69.3451,Asia
+61,A,Arabic,M,BS,Spring,34,2021,6,2,T1,P,Jun,30-35,Pakistan,30.3753,69.3451,Asia
+62,A,Arabic,M,BS,Fall,29,2020,7,3,T1,A,Jul,25-30,Pakistan,30.3753,69.3451,Asia
+63,D,Arabic,F,MS,Fall,30,2021,7,3,T2,R,Jul,25-30,Pakistan,30.3753,69.3451,Asia
+64,P,Arabic,F,BS,Fall,21,2021,8,1,T3,R,Aug,18-24,Saudi Arabia,23.885942,45.079162,M.E
+65,P,French,F,BS,Spring,35,2020,8,2,T2,A,Aug,30-35,Saudi Arabia,23.885942,45.079162,M.E
+66,D,French,M,MS,Fall,38,2020,8,1,T1,R,Aug,35-40,Saudi Arabia,23.885942,45.079162,M.E
+67,P,French,M,MS,Fall,37,2020,9,2,T5,A,Sep,35-40,Saudi Arabia,23.885942,45.079162,M.E
+68,D,French,M,BS,Spring,21,2021,9,2,T4,R,Sep,18-24,Saudi Arabia,23.885942,45.079162,M.E
+69,A,French,F,BS,Fall,20,2020,10,2,T4,R,Oct,18-24,Saudi Arabia,23.885942,45.079162,M.E
+70,A,French,M,BS,Spring,36,2021,10,3,T3,R,Oct,35-40,Saudi Arabia,23.885942,45.079162,M.E
+71,A,Urdu,M,BS,Spring,18,2021,11,3,T2,P,Nov,18-24,Saudi Arabia,23.885942,45.079162,M.E
+72,A,Urdu,F,MS,Spring,34,2021,11,1,T1,A,Nov,30-35,Saudi Arabia,23.885942,45.079162,M.E
+73,P,Urdu,F,MS,Spring,26,2021,12,1,T1,R,Dec,25-30,Saudi Arabia,23.885942,45.079162,M.E
+74,D,Urdu,F,BS,Fall,19,2021,12,2,T2,A,Dec,18-24,Bangladesh,23.685,90.3563,Asia
+75,P,Urdu,M,BS,Fall,20,2021,1,3,T3,A,Jan,18-24,Bangladesh,23.685,90.3563,Asia
+76,D,English,M,BS,Spring,21,2021,1,3,T2,P,Jan,18-24,Bangladesh,23.685,90.3563,Asia
+77,P,English,M,PHD,Fall,22,2021,1,1,T1,P,Jan,18-24,Bangladesh,23.685,90.3563,Asia
+78,P,English,F,PHD,Fall,23,2021,2,2,T5,A,Feb,18-24,Turkey,38.9637,35.2433,Europe
+79,A,English,M,PHD,Spring,24,2021,2,3,T4,R,Feb,18-24,Turkey,38.9637,35.2433,Europe
+80,A,English,F,BS,Fall,25,2021,2,1,T4,R,Feb,18-24,Turkey,38.9637,35.2433,Europe
+81,A,Arabic,M,BS,Spring,26,2021,3,1,T3,A,Mar,25-30,Turkey,38.9637,35.2433,Europe
+82,A,Arabic,M,BS,Fall,27,2021,3,3,T2,R,Mar,25-30,Turkey,38.9637,35.2433,Europe
+83,D,Arabic,F,MS,Fall,28,2021,3,2,T1,P,Mar,25-30,Turkey,38.9637,35.2433,Europe
+84,P,Arabic,F,BS,Fall,29,2021,4,1,T1,P,Apr,25-30,Turkey,38.9637,35.2433,Europe
+85,P,Arabic,F,BS,Spring,30,2021,4,3,T2,A,Apr,25-30,Turkey,38.9637,35.2433,Europe
+86,D,Arabic,M,MS,Fall,31,2021,4,2,T3,R,Apr,30-35,Turkey,38.9637,35.2433,Europe
+87,P,French,M,MS,Fall,32,2021,5,1,T2,R,May,30-35,Turkey,38.9637,35.2433,Europe
+88,D,French,M,BS,Spring,33,2021,5,1,T1,A,May,30-35,Turkey,38.9637,35.2433,Europe
+89,A,French,F,BS,Fall,34,2021,5,1,T5,R,May,30-35,Egypt,26.820553,30.802498,M.E
+90,A,French,M,BS,Spring,24,2021,6,1,T4,A,Jun,18-24,Egypt,26.820553,30.802498,M.E
+91,A,French,M,BS,Spring,18,2021,6,2,T4,R,Jun,18-24,Egypt,26.820553,30.802498,M.E
+92,A,French,F,MS,Spring,28,2021,6,3,T3,R,Jun,25-30,Egypt,26.820553,30.802498,M.E
+93,P,French,F,MS,Spring,18,2020,7,3,T2,P,Jul,18-24,Egypt,26.820553,30.802498,M.E
+94,D,French,F,BS,Fall,19,2020,7,3,T1,A,Jul,18-24,Egypt,26.820553,30.802498,M.E
+95,P,French,M,BS,Fall,20,2020,7,3,T1,R,Jul,18-24,Egypt,26.820553,30.802498,M.E
+96,D,French,M,BS,Spring,21,2020,8,1,T2,R,Aug,18-24,Egypt,26.820553,30.802498,M.E
+97,P,Urdu,M,PHD,Fall,22,2020,8,2,T3,A,Aug,18-24,Nigeria,9.082,8.6753,Africa
+98,P,Urdu,F,PHD,Fall,23,2020,8,3,T2,P,Aug,18-24,Nigeria,9.082,8.6753,Africa
+99,A,Urdu,M,PHD,Spring,24,2020,9,1,T1,P,Sep,18-24,Nigeria,9.082,8.6753,Africa
+100,A,English,F,BS,Fall,25,2020,9,2,T5,A,Sep,18-24,Nigeria,9.082,8.6753,Africa
