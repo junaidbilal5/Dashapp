@@ -35,7 +35,7 @@ pending='https://assets9.lottiefiles.com/packages/lf20_z5q31ue7.json'
 declined='https://assets2.lottiefiles.com/packages/lf20_bc4ugzhr.json'
 
 
-options = dict(loop=False, autoplay=True, rendererSettings=dict(preserveAspectRatio='xMidYMid slice'))
+options = dict(loop=2, autoplay=True, rendererSettings=dict(preserveAspectRatio='xMidYMid slice'))
 
 ##-----------------------------------------------------------##--------------------------------------------###
 
@@ -67,7 +67,7 @@ def AdmissionsTab():
                                 html.Div(
                                     children = [
                                         html.H1(
-                                            children = f"Admission Section",
+                                            children = f"Admission Section/قسم القبول",
                                             style = {
                                                 "margin-bottom": "0",
                                                 "color": "black"
@@ -84,7 +84,7 @@ def AdmissionsTab():
         html.Div([
 
                 html.Div([
-                    html.Label(['Select Session'],style={'font-weight': 'bold', 'color':'black'}),
+                    html.Label(['Select Year/ اختر السنة'],style={'font-weight': 'bold', 'color':'black'}),
                     dcc.Dropdown(
                         id="dropdown",
                         options=[{"label": x, "value": x} for x in year],
@@ -97,7 +97,7 @@ def AdmissionsTab():
 
 
         html.Div([
-                    html.Label(['Select Academic Level'],style={'font-weight': 'bold', 'color':'black'}),
+                    html.Label(['Select Semester/حدد الفصل الدراسي'],style={'font-weight': 'bold', 'color':'black'}),
                     dcc.Dropdown(
                         id="dropdown2",
                         options=[{"label": x, "value": x} for x in AcTerm],
@@ -120,14 +120,14 @@ def AdmissionsTab():
                             children = [
                                 # Title
                                 html.H6(id='card_name1',
-                                    children = "Total Applied",
+                                    children = "Total Applied/المجموع المطبق",
                                     style = {
                                         "textAlign": "center",
                                         "color": "black"
                                     }
                                 ),
 
-                                (Lottie(options=options, width='27%', height='27%', url=applied)),
+                                (Lottie(options=options, width='20%', height='20%', url=applied)),
                                 # Total value
                                 html.P(id="card_1",
                                     children = "000",
@@ -146,13 +146,13 @@ def AdmissionsTab():
                             children = [
                                 # Title
                                 html.H6(
-                                    children = "Approved",
+                                    children = "Approved/موافقة",
                                     style = {
                                         "textAlign": "center",
                                         "color": "black"
                                     }
                                 ),
-                                (Lottie(options=options, width='27%', height='27%', url=approved)),
+                                (Lottie(options=options, width='20%', height='20%', url=approved)),
                                 # Total value
                                 html.P(id="card_2",
                                     children = "000",
@@ -171,13 +171,13 @@ def AdmissionsTab():
                             children = [
                                 # Title
                                 html.H6(
-                                    children = "Pending",
+                                    children = "Pending/قيد الانتظار",
                                     style = {
                                         "textAlign": "center",
                                         "color": "black"
                                     }
                                 ),
-                                (Lottie(options=options, width='27%', height='27%', url=pending)),
+                                (Lottie(options=options, width='20%', height='20%', url=pending)),
                                 # Total recovered
                                 html.P(id="card_3",
                                     children = "000",
@@ -196,13 +196,13 @@ def AdmissionsTab():
                             children = [
                                 # Title
                                 html.H6(
-                                    children = "Declined",
+                                    children = "Declined/رفض",
                                     style = {
                                         "textAlign": "center",
                                         "color": "black"
                                     }
                                 ),
-                                (Lottie(options=options, width='27%', height='27%', url=declined)),
+                                (Lottie(options=options, width='20%', height='20%', url=declined)),
                                 # Total v
                                 html.P(id="card_4",
                                     children = "000",
@@ -253,7 +253,12 @@ html.Div([
 
     html.Div([
         dcc.Graph(id='the_graph1', config=dict(locale="fr"))
-    ], className="create_container eight columns"),
+    ], className="create_container four columns"),
+
+    html.Div([
+        dcc.Graph(id='bar-graph')
+    ], className="create_container four columns"),
+
 
     html.Div(
         children=[
@@ -279,9 +284,7 @@ html.Div([
 
 
         html.Div([
-            html.Div([
-                dcc.Graph(id='bar-graph')
-            ],className = "create_container eight columns"),
+
 
             html.Div([
                 dcc.Graph(id='small-bar-graph' )
@@ -314,7 +317,7 @@ html.Div([
 
         ###--------------------------------Values in the given card of Select Coountry-----------------------------####
         html.H6(
-                                    children = "Exam Centres",
+                                    children = "Exam Centres/مراكز الاختبارات",
                                     style = {
                                         "textAlign": "center",
                                         "color": "black"
@@ -335,7 +338,7 @@ html.Div([
 
         ##------------------------------------------------------##-------------------------------------------------##
         html.H6(
-                                    children = "Total Faculty",
+                                    children = "Total Faculty/مجموع المدرسين",
                                     style = {
                                         "textAlign": "center",
                                         "color": "black"
@@ -356,7 +359,7 @@ html.Div([
 
         ##---------------------------------------------##-----------------------------------------------##
         html.H6(
-                                    children = "Total Students",
+                                    children = "Total Students/مجموع الطلاب",
                                     style = {
                                         "textAlign": "center",
                                         "color": "black"
@@ -395,11 +398,7 @@ html.Div([
 
 
 
-        ],id = "mainContainer",
-            style = {
-                "display": "flex",
-                "flex-direction": "column"
-            }),
+        ],id = "mainContainer"),
 
 
 ]
@@ -428,8 +427,8 @@ def update_graph(year, term):
                 y=dfg['AppID'],
                 name="Department Wise",
                 marker={
-                    "color": "rgb(219, 191, 249)",
-                    "opacity":0.6,
+                    "color": "#DD4B39",
+
                 },
                 hoverinfo="text",
 
@@ -441,7 +440,7 @@ def update_graph(year, term):
 
         "layout": go.Layout(
             title={
-                "text": f"Number of applications by Department in {term}, {year} ",
+                "text": f"Number of applications by Department/عدد المتقدمين حسب القسم  ",
                 "y": 0.93,
                 "x": 0.5,
                 "xanchor": "center",
@@ -452,11 +451,12 @@ def update_graph(year, term):
                 "size": 15
             },
             xaxis={
-                "title": "<b>Department</b>",
+                "title": "<b>Department/قسم</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
                 "showticklabels": True,
+                'categoryorder': 'total descending',
                 "linecolor": "black",
                 "linewidth": 1,
                 "ticks": "outside",
@@ -467,7 +467,7 @@ def update_graph(year, term):
                 }
             },
             yaxis={
-                "title": "<b>Number of applications</b>",
+                "title": "<b>Number of applications/عدد المتقدمين</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
@@ -526,7 +526,7 @@ def update_graph(year, term):
                 orientation='h',
                 marker={
                     "color": "rgb(219, 191, 249)",
-                    "opacity":0.6,
+
                 },
                 hoverinfo="text",
 
@@ -538,7 +538,7 @@ def update_graph(year, term):
 
         "layout": go.Layout(
             title={
-                "text": f"Number of applications by Continent in {term}, {year} ",
+                "text": f"Number of applications by Continent/عدد الطلبات حسب القارة  ",
                 "y": 0.93,
                 "x": 0.5,
                 "xanchor": "center",
@@ -549,11 +549,12 @@ def update_graph(year, term):
                 "size": 15
             },
             xaxis={
-                "title": "<b>Number of applications</b>",
+                "title": "<b>Number of applications/عدد المتقدمين</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
                 "showticklabels": True,
+                'categoryorder': 'total descending',
                 "linecolor": "black",
                 "linewidth": 1,
                 "ticks": "outside",
@@ -564,7 +565,7 @@ def update_graph(year, term):
                 }
             },
             yaxis={
-                "title": "<b>Continent</b>",
+                "title": "<b>Continent/القارة</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
@@ -613,25 +614,24 @@ def update_graph(year):
 
     dfg=df.groupby('Year').count().reset_index()
 
+    categories = ['Jan, 2017', 'Jan,2018', 'Jan,2019', 'Jan,2020', 'Jan,2021']
     fig = {
         "data": [
             go.Scatter(
-                x=dfg['Year'],
-                y=dfg['AppID'],
+                x=categories,
+                y=[1500, 1700, 1600, 2000, 2400],
                 name="Department Wise",
-                marker={
-                    "color": "orange"
-                },
-                hoverinfo="text",
+                marker={'color':'rgb(186, 225, 247)'},
+
                 fill='tozeroy',
-                fillcolor='rgba(253,255,223, 0.6)'
+                fillcolor='rgba(232, 255, 249, 0.6)'
 
             ),
 
         ],
         "layout": go.Layout(
             title={
-                "text": "Year Wise Admissions ",
+                "text": "Year Wise Admissions/القبول السنوي ",
                 "y": 0.93,
                 "x": 0.5,
                 "xanchor": "center",
@@ -642,11 +642,12 @@ def update_graph(year):
                 "size": 15
             },
             xaxis={
-                "title": "<b>Year</b>",
+                "title": "<b>Year/عام</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
                 "showticklabels": True,
+
                 "linecolor": "white",
                 "linewidth": 1,
                 "ticks": "outside",
@@ -657,7 +658,7 @@ def update_graph(year):
                 }
             },
             yaxis={
-                "title": "<b>Number of applications</b>",
+                "title": "<b>Number of applications/عدد المتقدمين</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
@@ -719,13 +720,13 @@ def update_graph(year,  term):
     fig = {
         "data": [
             go.Bar(
-                x=dfg['AppID'],
-                y=dfg['AgeGroup'],
+                x=dfg['AgeGroup'],
+                y=dfg['AppID'],
                 name="Age group wise",
-                orientation='h',
+                orientation='v',
                 marker={
-                    "color": "rgb(219, 191, 249)",
-                    "opacity": 0.6,
+                    "color": "#00A65A",
+
                 },
                 hoverinfo="text",
 
@@ -734,7 +735,7 @@ def update_graph(year,  term):
         ],
         "layout": go.Layout(
             title={
-                "text": f"Number of applications by Age Group in {term}, {year} ",
+                "text": f"Number of applications by Age Group /عدد المتقدمين حسب الفئة العمرية ",
                 "y": 0.93,
                 "x": 0.5,
                 "xanchor": "center",
@@ -745,11 +746,12 @@ def update_graph(year,  term):
                 "size": 15
             },
             xaxis={
-                "title": "<b>Applications</b>",
+                "title": "<b>Age Group/الفئة العمرية</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
                 "showticklabels": True,
+                'categoryorder': 'total descending',
                 "linecolor": "white",
                 "linewidth": 1,
                 "ticks": "outside",
@@ -760,7 +762,7 @@ def update_graph(year,  term):
                 }
             },
             yaxis={
-                "title": "<b>Age Group</b>",
+                "title": "<b>Total Applicants/إجمالي المتقدمين </b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
@@ -827,7 +829,7 @@ def update_graph(year, term):
 								],
 								"layout": go.Layout(
 									title={
-										"text": f"Gender Proportion in {term}, {year}",
+										"text": f"Gender Proportion /الجنس",
 										"y": 0.93,
 										"x": 0.5,
 										"xanchor": "center",
@@ -887,7 +889,7 @@ def update_graph(year, term):
 								],
 								"layout": go.Layout(
 									title={
-										"text": f"Academic Level Proportion in {term}, {year}",
+										"text": f"Academic Level Proportion/نسبة المستوى الأكاديمي",
 										"y": 0.93,
 										"x": 0.5,
 										"xanchor": "center",

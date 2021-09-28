@@ -24,7 +24,7 @@ sponsor='https://assets4.lottiefiles.com/packages/lf20_0cvczw8l.json'
 
 
 
-options = dict(loop=False, autoplay=True, rendererSettings=dict(preserveAspectRatio='xMidYMid slice'))
+options = dict(loop=2, autoplay=True, rendererSettings=dict(preserveAspectRatio='xMidYMid slice'))
 
 ##-----------------------------------------------------------##--------------------------------------------###
 
@@ -32,7 +32,7 @@ def ScholarshipTab():
     return [
 
         html.Div([
-        html.Div([
+
 
         html.Div(
                             children = [
@@ -40,7 +40,7 @@ def ScholarshipTab():
                                 html.Div(
                                     children = [
                                         html.H1(
-                                            children = "Scholarship Page",
+                                            children = "Scholarship Section/قسم الابتعاث",
                                             style = {
                                                 "margin-bottom": "0",
                                                 "color": "black"
@@ -79,13 +79,13 @@ def ScholarshipTab():
                             children = [
                                 # Title
                                 html.H6(
-                                    children = "Total Students Availing Scholarship",
+                                    children = "Total Students Availing Scholarship/عدد طلاب المنح",
                                     style = {
                                         "textAlign": "center",
                                         "color": "black"
                                     }
                                 ),
-                                (Lottie(options=options, width='27%', height='27%', url=approved)),
+                                (Lottie(options=options, width='20%', height='20%', url=approved)),
                                 # Total value
                                 html.P(id="card_11",
                                     children = "000",
@@ -104,13 +104,13 @@ def ScholarshipTab():
                             children = [
                                 # Title
                                 html.H6(
-                                    children = "Total Amount Spent",
+                                    children = "Total Amount Spent/إجمالي المبلغ المنفق",
                                     style = {
                                         "textAlign": "center",
                                         "color": "black"
                                     }
                                 ),
-                                (Lottie(options=options, width='32%', height='32%', url=money)),
+                                (Lottie(options=options, width='20%', height='20%', url=money)),
                                 # Total value
                                 html.P(id="card_22",
                                     children = "000",
@@ -129,13 +129,13 @@ def ScholarshipTab():
                             children = [
                                 # Title
                                 html.H6(
-                                    children = "Total Sponsors",
+                                    children = "Total Sponsors/الرعاة",
                                     style = {
                                         "textAlign": "center",
                                         "color": "black"
                                     }
                                 ),
-                                (Lottie(options=options, width='27%', height='27%', url=sponsor)),
+                                (Lottie(options=options, width='20%', height='20%', url=sponsor)),
                                 # Total value
                                 html.P(id="card_33",
                                     children = "000",
@@ -230,7 +230,7 @@ def ScholarshipTab():
                 "flex-direction": "column"
             }),
 
-        ])
+
 ]
 
 @app.callback(
@@ -282,7 +282,7 @@ def update_graph(year):
         ],
         "layout": go.Layout(
             title={
-                "text": "Total Student scholarship by Department  ",
+                "text": "Total Student scholarship by College/إجمالي المنحة الدراسية للطلاب حسب الكلية  ",
                 "y": 0.93,
                 "x": 0.5,
                 "xanchor": "center",
@@ -293,12 +293,13 @@ def update_graph(year):
                 "size": 15
             },
             xaxis={
-                "title": "<b>Number of students</b>",
+                "title": "<b>Number of students/عدد الطلاب</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
                 "showticklabels": True,
                 "linecolor": "white",
+                'categoryorder': 'total descending',
                 "linewidth": 1,
                 "ticks": "outside",
                 "tickfont": {
@@ -308,7 +309,7 @@ def update_graph(year):
                 }
             },
             yaxis={
-                "title": "<b>College</b>",
+                "title": "<b>College /كلية</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
@@ -371,7 +372,7 @@ def update_graph(year):
         ],
         "layout": go.Layout(
             title={
-                "text": "Number of scholarship holders by country",
+                "text": "Number of scholarships by country/عدد المنح الدراسية حسب الدولة",
                 "y": 0.93,
                 "x": 0.5,
                 "xanchor": "center",
@@ -382,12 +383,13 @@ def update_graph(year):
                 "size": 15
             },
             xaxis={
-                "title": "<b>Country</b>",
+                "title": "<b>Country/دولة</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
                 "showticklabels": True,
                 "linecolor": "white",
+                'categoryorder': 'total descending',
                 "linewidth": 1,
                 "ticks": "outside",
                 "tickfont": {
@@ -397,7 +399,7 @@ def update_graph(year):
                 }
             },
             yaxis={
-                "title": "<b>Number of students</b>",
+                "title": "<b>Number of students/عدد الطلاب</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
@@ -451,18 +453,18 @@ def update_graph(year):
                 y=dfg['Sch_Amount'],
                 name="Department Wise",
                 marker={
-                    "color": "blue"
+                    'color':'rgb(186, 225, 247)'
                 },
                 hoverinfo="text",
                 fill='tozeroy',
-                fillcolor='rgba(198,225,248, 0.5)'
+                fillcolor='rgba(232, 255, 249, 0.6)'
 
             ),
 
         ],
         "layout": go.Layout(
             title={
-                "text": "Yearly scholarship amount ",
+                "text": "Yearly scholarship amount/مبلغ المنحة السنوية ",
                 "y": 0.93,
                 "x": 0.5,
                 "xanchor": "center",
@@ -473,11 +475,12 @@ def update_graph(year):
                 "size": 15
             },
             xaxis={
-                "title": "<b>Year</b>",
+                "title": "<b>Year/عام</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
                 "showticklabels": True,
+                'categoryorder': 'total descending',
                 "linecolor": "white",
                 "linewidth": 1,
                 "ticks": "outside",
@@ -488,7 +491,7 @@ def update_graph(year):
                 }
             },
             yaxis={
-                "title": "<b>Amount spent</b>",
+                "title": "<b>Amount spent/المقدار المنفق</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
@@ -538,18 +541,18 @@ def update_graph(year):
                 y=dfg['SponsorNo'],
                 name="Department Wise",
                 marker={
-                    "color": "blue"
+                    'color':'rgb(186, 225, 247)'
                 },
                 hoverinfo="text",
                 fill='tozeroy',
-                fillcolor='rgba(198,225,248, 0.5)'
+                fillcolor='rgba(232, 255, 249, 0.6)'
 
             ),
 
         ],
         "layout": go.Layout(
             title={
-                "text": "Yearly sponsor numbers ",
+                "text": "Yearly sponsor numbers/عدد الرعاة سنويا ",
                 "y": 0.93,
                 "x": 0.5,
                 "xanchor": "center",
@@ -560,11 +563,12 @@ def update_graph(year):
                 "size": 15
             },
             xaxis={
-                "title": "<b>Year</b>",
+                "title": "<b>Year/عام</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
                 "showticklabels": True,
+                'categoryorder': 'total descending',
                 "linecolor": "white",
                 "linewidth": 1,
                 "ticks": "outside",
@@ -575,7 +579,7 @@ def update_graph(year):
                 }
             },
             yaxis={
-                "title": "<b>Sponsors</b>",
+                "title": "<b>Sponsors/الرعاة</b>",
                 "color": "black",
                 "showline": True,
                 "showgrid": False,
@@ -639,7 +643,7 @@ def update_graph(year):
 								],
 								"layout": go.Layout(
 									title={
-										"text": f"Gender-wise scholarship students in {year}",
+										"text": f"Gender-wise scholarship students/  الجنس (الطلاب)",
 										"y": 0.93,
 										"x": 0.5,
 										"xanchor": "center",
@@ -699,7 +703,7 @@ def update_graph(year):
 								],
 								"layout": go.Layout(
 									title={
-										"text": f"Ethnincty-wise scholarship holders in {year}",
+										"text": f"Continent-wise scholarship holders/طلاب المنح الدراسية عبر القارة",
 										"y": 0.93,
 										"x": 0.5,
 										"xanchor": "center",
